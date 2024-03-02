@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<p> {{ dish.desc }} </p>
+
+{% if showform %}
+<form  method="post">
+  {% csrf_token %}
+  <input type="hidden" value="{{ dish.pk }}" name="dish">
+  {{ form.non_field_errors }}
+  {{ form.date.errors }}
+  {{ form.date }}
+  <input type="submit" value="Add">
+</form>
+{% endif %}
+
+{% for meal in meal_set %}
+  {% if meal.has_egv_data %}
+    {% autoescape off %}
+      {{ meal.plot_as_div }}
+    {% endautoescape %}
+  {% else %}
+    <div>
+      <p>
+		{{ meal.when | date:"D, N j, Y, P" }} (no EGV data)
+	  </p>
+	</div>
+  {% endif %}
+{% endfor %}
+{% endblock %}
+

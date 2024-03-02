@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block title %}
+      <title>Bolus History</title>
+    {% endblock %}
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+
+  <div class="navbar">
+    <ul>
+      <li><a href="{% url 'meals:search' %}">Search</a></li>
+      <li><a href="{% url 'meals:add' %}">Add</a></li>
+    </ul>
+  </div>
+  <body>
+    {% block sidebar %}
+      <!-- insert default navigation text for every page -->
+    {% endblock %}
+    {% block content %}
+      <!-- default content text (typically empty) -->
+    {% endblock %}
+  </body>
+</html>
+

@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<form action="{% url "meals:search" %}" method="post">
+  {% csrf_token %}
+  <input list="dish_list"
+         id="dish_search"
+         name="desc"
+         placeholder="Enter meal name"
+         type="search"
+         size=60
+		 required >
+    <datalist id="dish_list">
+        {% for dish in object_list %}
+        <option value="{{ dish.desc }}"></option>
+        {% endfor %}
+    </datalist>
+
+  <input type="submit" value="Go">
+</form>
+{% endblock %}
+
