@@ -195,6 +195,7 @@ if __name__ == "__main__":
 
     sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bolushistory.settings")
+    import bolushistory.settings
 
     import argparse
     parser = argparse.ArgumentParser(
